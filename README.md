@@ -1,5 +1,5 @@
 - 作者简介
-  - 开源库底层库主要作者和负责人: https://github.com/baidu/CUP
+  - Python 开源基础库负责人和主要作者: https://github.com/baidu/CUP
   - 某厂专有云测试开发负责人, 十年分布式存储\计算经验
   - 微信公众号: 程序员的梦呓指南
 
