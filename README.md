@@ -1,7 +1,7 @@
 - 发起人简介
   - 某厂专有云测试开发负责人, 十年分布式存储\计算项目经验
   - Python 开源基础库负责人和主要作者: https://github.com/baidu/CUP
-  - 微信公众号: 程序员的梦呓指南 ![](./weixin_nosign.png | width=80px)
+  - 微信公众号: 程序员的梦呓指南 ![](weixin_nosign.png | width=80px)
 
 - 文档更新:
   - 欢迎感兴趣的朋友一起写稿填坑
