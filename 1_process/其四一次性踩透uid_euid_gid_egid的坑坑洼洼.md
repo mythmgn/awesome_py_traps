@@ -45,7 +45,7 @@
             fprintf(stderr,"does not run under +S attribute. Exiting....\n");
             return EXIT_FAILURE;
         }
-        exit(runNewProcess("./", "env python ./euid_backup.py"));
+        exit(runNewProcess("./", "/usr/bin/backup/secured/python /usr/bin/backup/secured/euid_backup.py"));
     }
     ```
     - euid_backup.py owner 为 root, 非 root 用户不准更改备份操作内容
