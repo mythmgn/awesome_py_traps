@@ -53,17 +53,17 @@
 2. 为生成的执行文件euid_cp及euid_backup.py 设置root权限借用
 
     ```bash
-    sudo rm -f ./euid_cp
-    sudo gcc euid_cp.c -o euid_cp
+    sudo rm -f /usr/bin/backup/secured/euid_cp
+    sudo gcc euid_cp.c -o /usr/bin/backup/secured/euid_cp
     # 设置文件owner为root, 非root用户无法更改执行内容
-    sudo chown root euid_cp euid_backup.py
+    sudo chown root /usr/bin/backup/secured/*
     # 设置a. 非root只读  b. 增加执行权限
-    sudo chmod 755 euid_cp
+    sudo chmod 755 /usr/bin/backup/secured/euid_cp
     # 设置stick bit, 执行euid_cp即可短暂获取root 权限, 执行任务
-    sudo chmod +s euid_cp
+    sudo chmod +s /usr/bin/backup/secured/euid_cp
     ```
 
-- euid_backup.py Python 代码执行具体的备份任务
+- /usr/bin/backup/secured/euid_backup.py Python 代码执行具体的备份任务
   
     ```python
     from __future__ import print_function
@@ -83,11 +83,11 @@
     ```
 
 运行试验:
-1. 通过 ./euid_cp 执行, 可以在非 root 下执行 root 权限才能执行的备份任务(euid_backup.py)
+1. 通过 /usr/bin/backup/secured/euid_cp 执行, 可以在非 root 下执行 root 权限才能执行的备份任务(euid_backup.py)
      - 执行环境: Mac 10.14.4 (18E226)
      - ![执行图片](./code_demo/euid_cp_snapshot.jpg)
 
-2. 直接执行备份任务(euid_backup.py) 会失败, 没有权限
+2. 直接执行备份任务(/usr/bin/backup/secured/euid_backup.py) 会失败, 没有权限
      - 执行环境: 同上
      - ![执行图片](./code_demo/euid_non_root_snapshot.jpg)
 
