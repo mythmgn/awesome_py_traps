@@ -84,12 +84,8 @@
 
 运行试验:
 1. 通过 /usr/bin/backup/secured/euid_cp 执行, 可以在非 root 下执行 root 权限才能执行的备份任务(euid_backup.py)
-     - 执行环境: Mac 10.14.4 (18E226)
-     - ![执行图片](./code_demo/euid_cp_snapshot.jpg)
 
 2. 直接执行备份任务(/usr/bin/backup/secured/euid_backup.py) 会失败, 没有权限
-     - 执行环境: 同上
-     - ![执行图片](./code_demo/euid_non_root_snapshot.jpg)
 
 ## 1.3 坑位分析
 
