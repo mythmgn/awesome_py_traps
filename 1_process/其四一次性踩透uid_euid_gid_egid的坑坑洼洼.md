@@ -38,7 +38,7 @@
 
 **具体做法:**
 
-1. 利用c/c++程序出借部分 root 权限  (完整代码关注公号点击菜单查看)
+1. 利用c/c++程序出借部分 root 权限 
 
     - 该c程序限定执行的备份操作为 python 代码 euid_backup.py
     ```c
@@ -47,7 +47,7 @@
             fprintf(stderr,"does not run under +S attribute. Exiting....\n");
             return EXIT_FAILURE;
         }
-        exit(runNewProcess("./", "env python ./euid_backup.py"));
+        exit(runNewProcess("./", "/usr/bin/backup/secured/python /usr/bin/backup/secured/euid_backup.py"));
     }
     ```
     - euid_backup.py owner 为 root, 非 root 用户不准更改备份操作内容
@@ -55,17 +55,17 @@
 2. 为生成的执行文件euid_cp及euid_backup.py 设置root权限借用
 
     ```bash
-    sudo rm -f ./euid_cp
-    sudo gcc euid_cp.c -o euid_cp
+    sudo rm -f /usr/bin/backup/secured/euid_cp
+    sudo gcc euid_cp.c -o /usr/bin/backup/secured/euid_cp
     # 设置文件owner为root, 非root用户无法更改执行内容
-    sudo chown root euid_cp euid_backup.py
+    sudo chown root /usr/bin/backup/secured/*
     # 设置a. 非root只读  b. 增加执行权限
-    sudo chmod 755 euid_cp
+    sudo chmod 755 /usr/bin/backup/secured/euid_cp
     # 设置stick bit, 执行euid_cp即可短暂获取root 权限, 执行任务
-    sudo chmod +s euid_cp
+    sudo chmod +s /usr/bin/backup/secured/euid_cp
     ```
 
-- euid_backup.py Python 代码执行具体的备份任务
+- /usr/bin/backup/secured/euid_backup.py Python 代码执行具体的备份任务
   
     ```python
     from __future__ import print_function
@@ -85,13 +85,9 @@
     ```
 
 运行试验:
-1. 通过 ./euid_cp 执行, 可以在非 root 下执行 root 权限才能执行的备份任务(euid_backup.py)
-     - 执行环境: Mac 10.14.4 (18E226)
-     - ![执行图片](./code_demo/euid_cp_snapshot.jpg)
+1. 通过 /usr/bin/backup/secured/euid_cp 执行, 可以在非 root 下执行 root 权限才能执行的备份任务(euid_backup.py)
 
-2. 直接执行备份任务(euid_backup.py) 会失败, 没有权限
-     - 执行环境: 同上
-     - ![执行图片](./code_demo/euid_non_root_snapshot.jpg)
+2. 直接执行备份任务(/usr/bin/backup/secured/euid_backup.py) 会失败, 没有权限
 
 ## 1.3 坑位分析
 
@@ -121,6 +117,16 @@
 1. 为什么本文没有直接对euid_backup.py文件进行设置+s操作, 而是用可执行的c/c++程序做执行器
 
 2. Linux 系统里的passwd 程序是否也是这个原理?  它跟哪些文件/命令相关
+
+
+P.S. 示例代码经 py-cn 圈朋友提醒作下进一步说明:
+
+1. 该示例代码和场景更多的是为了展示 suid 的特性
+2. 如果真实环境要进行如上的备份任务有多种实现选择, 该项并非最优
+ - 比如任务执行器实现 (普通用户下, 提交任务到 root 启动的执行器), 该执行器鉴权后在 root 下执行具体备份任务
+ - 分配 sudo 权限到不同的用户组进行权限控制
+
+欢迎大家对内容\示例代码等提更多的建议. 
 
 ## 下期坑位预告
 
