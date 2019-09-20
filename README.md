@@ -17,12 +17,12 @@
 - [2. 裸用 os.system 类函数的原罪.md](./1_process/其二裸用类os.system函数的原罪.md)
 - [3. 进程 pgid 是个什么鬼.md](./1_process/其三pgid是个什么鬼.md)
 - [4. 一次性踩透 uid_euid_gid_egid 的坑坑洼洼.md](./1_process/其四一次性踩透uid_euid_gid_egid的坑坑洼洼.md)
-- **[5. 为啥打不开新文件](./1_process/其五为啥打不开新文件.md) (新增2019.6.30)**
+- [5. 为啥打不开新文件](./1_process/其五为啥打不开新文件.md)
 - [6. PyDaemon 进程长什么样]()
 
 ## 2. 文件系统篇
 
-- [文件夹也是 File Object]
+- **[文件夹也是 File Object](./2_filesystem/其一目录也是个文件.md) <-------- (新增2019.9.20)**
 - [Umask 到底影响了谁]
 - [一次性搞清楚文件目录权限判定]
 - [慎用软硬链接]
