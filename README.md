@@ -1,5 +1,6 @@
 **Awesome Py Traps 的初衷**
-1. 梳理自己的 python 知识树, 让 python 和 Unix-Like 系统知识相结合, 互相印证 
+1. 梳理自己的 python 知识树
+2. 让 Unix-Like 系统知识 和 python代码实现/试验 相结合, 互相印证 
 2. 总结在使用 python 编程过程中的经验教训
 
 
@@ -14,7 +15,7 @@
   - 微信公众号: 程序员的梦呓指南 ![](weixin_nosign.png)
 
 
-# Python 踩坑之旅
+# 1. Python 踩坑之旅
 
 ## 进程篇
 
@@ -36,7 +37,7 @@
 ## Pythonic 特色篇
 
 
-# 系统知识 坑洼之旅
+# 2. 系统知识 坑洼之旅
 
 ## 文件系统篇
 
