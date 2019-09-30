@@ -1,7 +1,6 @@
 **Awesome Py Traps 的初衷**
-1. 梳理自己的 python 知识树
+1. 梳理自己的 python 知识树, 总结在使用 python 编程过程中的经验教训
 2. 让 Unix-Like 系统知识 和 python代码实现/试验 相结合, 互相印证 
-2. 总结在使用 python 编程过程中的经验教训
 
 
 - 文档更新:
